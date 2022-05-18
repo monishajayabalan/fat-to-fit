@@ -1,0 +1,10 @@
+plice waching login table and username passward using login
+1-raduced card number10
+2-health food add and view
+3-gym photos view user
+4-multi login using
+5-payment,userprofile,medicaldoubts,food wiew only single user
+6-index.php creating and add admin login user registration
+7-medical doubts adding removed and replay option creating and 
+view single user
+food&diet add and view

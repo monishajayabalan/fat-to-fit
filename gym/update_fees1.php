@@ -1,0 +1,141 @@
+<!doctype html>
+<?php
+include 'connect.php';
+
+$tyre = $_GET['edit_id'];
+$tyre_query = mysqli_query($conn,"SELECT * from couple_fees where c_id='$tyre'");
+$tyre_data = mysqli_fetch_assoc($tyre_query);
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+
+    $month = $_REQUEST['month'];
+    $months = $_REQUEST['months'];
+    $year = $_REQUEST['year'];
+  
+  
+
+    
+    mysqli_query($conn,"UPDATE couple_fees SET `month` = '$month', `months` = '$months',`year` = '$year' WHERE c_id='$tyre'");
+    echo "<script> alert('Details updated');</script>";
+    echo "<script>window.location.href='edit_fees.php';</script>";
+
+
+
+}
+?>
+
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>Update General Fees</h2>
+
+<div class="container">
+  <form action="" method="POST">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">One month</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="month" name="month" value="<?php echo $tyre_data['month'];?>">  
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Six month</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="months" name="months" value="<?php echo $tyre_data['months'];?>">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">One year</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="year" name="year" value="<?php echo $tyre_data['year'];?>">
+    </div>
+  </div>
+ 
+ 
+  
+ <br>
+  <div class="row">
+    <input type="submit" name="submit" value="submit">
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
+
+
